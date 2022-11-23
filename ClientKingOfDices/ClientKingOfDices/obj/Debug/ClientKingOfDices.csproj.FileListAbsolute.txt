@@ -20,3 +20,13 @@ C:\Users\sonzogni.18064\Desktop\KingOfDices\ClientKingOfDices\ClientKingOfDices\
 C:\Users\sonzogni.18064\Desktop\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.CoreCompileInputs.cache
 C:\Users\sonzogni.18064\Desktop\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.exe
 C:\Users\sonzogni.18064\Desktop\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.pdb
+C:\Users\Utente\Desktop\KingOfDices-main\KingOfDices-main\ClientKingOfDices\ClientKingOfDices\bin\Debug\ClientKingOfDices.exe.config
+C:\Users\Utente\Desktop\KingOfDices-main\KingOfDices-main\ClientKingOfDices\ClientKingOfDices\bin\Debug\ClientKingOfDices.exe
+C:\Users\Utente\Desktop\KingOfDices-main\KingOfDices-main\ClientKingOfDices\ClientKingOfDices\bin\Debug\ClientKingOfDices.pdb
+C:\Users\Utente\Desktop\KingOfDices-main\KingOfDices-main\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.AssemblyReference.cache
+C:\Users\Utente\Desktop\KingOfDices-main\KingOfDices-main\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.Form1.resources
+C:\Users\Utente\Desktop\KingOfDices-main\KingOfDices-main\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.Properties.Resources.resources
+C:\Users\Utente\Desktop\KingOfDices-main\KingOfDices-main\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.GenerateResource.cache
+C:\Users\Utente\Desktop\KingOfDices-main\KingOfDices-main\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.CoreCompileInputs.cache
+C:\Users\Utente\Desktop\KingOfDices-main\KingOfDices-main\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.exe
+C:\Users\Utente\Desktop\KingOfDices-main\KingOfDices-main\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.pdb
