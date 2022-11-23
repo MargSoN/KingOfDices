@@ -55,6 +55,10 @@ namespace ServerKingOfDices
                     MessageBox.Show("numero" + RollDice2);
                     byte[] BRollDice2 = BitConverter.GetBytes(RollDice2);
                     num.Send(BRollDice2);
+                    int addrolls = 0;
+                    addrolls = RollDice + RollDice2;
+                    byte[] BAddrolls = BitConverter.GetBytes(addrolls);
+                    num.Send(BAddrolls);
                     num.Shutdown(SocketShutdown.Both);
                     num.Close();
                 }

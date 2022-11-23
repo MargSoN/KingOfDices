@@ -43,6 +43,10 @@ namespace ClientKingOfDices
                 label2.Text = messaggio2.ToString();
                 //MessageBox.Show(messaggio.ToString());
                 //MessageBox.Show(messaggio2.ToString());
+                byte[] BReciveSum = new byte[1024];
+                socket.Receive(BReciveSum);
+                int messaggioSum = BitConverter.ToInt32(BReciveSum, 0);
+                label3.Text = messaggioSum.ToString();
                 socket.Shutdown(SocketShutdown.Both);
                 socket.Close();
             }
