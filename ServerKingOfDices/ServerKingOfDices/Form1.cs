@@ -39,22 +39,26 @@ namespace ServerKingOfDices
                 {
                     Socket num = socket.Accept();
                     MessageBox.Show("client connesso con sucesso");
-
+                    //PRIMO TIRO DI DADI
                     int RollDice = 0;
                     Random rn = new Random();
                     RollDice = rn.Next(1, 7);
                     label1.Text = "numero dado 1=" + RollDice.ToString();
-                    MessageBox.Show("numero" + RollDice);
+                    MessageBox.Show("numero" + RollDice); //Messagebox che se tolgo non va
                     //listView1.Items.Add(num.LocalEndPoint.ToString() + " " + NumCas.ToString());
                     byte[] BRollDice = BitConverter.GetBytes(RollDice);
                     num.Send(BRollDice);
+
+                    //SECONDO TIRO DI DADI
                     int RollDice2 = 0;
                     Random rn2 = new Random();
                     RollDice2 = rn2.Next(1, 7);
                     label2.Text = "numero dado 2=" + RollDice2.ToString();
-                    MessageBox.Show("numero" + RollDice2);
+                    MessageBox.Show("numero" + RollDice2); //Messagebox che se tolgo non va
                     byte[] BRollDice2 = BitConverter.GetBytes(RollDice2);
                     num.Send(BRollDice2);
+
+                    //SOMMA DEI DUE DADI
                     int addrolls = 0;
                     addrolls = RollDice + RollDice2;
                     byte[] BAddrolls = BitConverter.GetBytes(addrolls);

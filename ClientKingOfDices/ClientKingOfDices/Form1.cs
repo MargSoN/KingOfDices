@@ -33,16 +33,22 @@ namespace ClientKingOfDices
             {
                 socket.Connect(EP);
                 MessageBox.Show("connessione al server eseguita con successo");
+                
+                //RICEVIMENTO PRIMO DADO
                 byte[] BRecive = new byte[1024];
                 socket.Receive(BRecive);
                 int messaggio = BitConverter.ToInt32(BRecive, 0);
                 label1.Text = messaggio.ToString();
+
+                //RICEVIMENTO SECONDO DADO
                 byte[] BRecive2 = new byte[1024];
                 socket.Receive(BRecive2);
                 int messaggio2 = BitConverter.ToInt32(BRecive2, 0);
                 label2.Text = messaggio2.ToString();
                 //MessageBox.Show(messaggio.ToString());
                 //MessageBox.Show(messaggio2.ToString());
+
+                //RICEVIMENTO DELLA SOMMA
                 byte[] BReciveSum = new byte[1024];
                 socket.Receive(BReciveSum);
                 int messaggioSum = BitConverter.ToInt32(BReciveSum, 0);
