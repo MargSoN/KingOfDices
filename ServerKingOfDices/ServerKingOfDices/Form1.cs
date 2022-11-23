@@ -16,6 +16,7 @@ namespace ServerKingOfDices
     {
         public Form1()
         {
+            CheckForIllegalCrossThreadCalls=false;
             InitializeComponent();
         }
 
@@ -38,17 +39,20 @@ namespace ServerKingOfDices
                 {
                     Socket num = socket.Accept();
                     MessageBox.Show("client connesso con sucesso");
+
                     int RollDice = 0;
                     Random rn = new Random();
                     RollDice = rn.Next(1, 7);
-                    //MessageBox.Show("numero" + RollDice);
+                    label1.Text = "numero dado 1=" + RollDice.ToString();
+                    MessageBox.Show("numero" + RollDice);
                     //listView1.Items.Add(num.LocalEndPoint.ToString() + " " + NumCas.ToString());
                     byte[] BRollDice = BitConverter.GetBytes(RollDice);
                     num.Send(BRollDice);
                     int RollDice2 = 0;
                     Random rn2 = new Random();
                     RollDice2 = rn2.Next(1, 7);
-                    //MessageBox.Show("numero" + RollDice2);
+                    label2.Text = "numero dado 2=" + RollDice2.ToString();
+                    MessageBox.Show("numero" + RollDice2);
                     byte[] BRollDice2 = BitConverter.GetBytes(RollDice2);
                     num.Send(BRollDice2);
                     num.Shutdown(SocketShutdown.Both);
