@@ -19,20 +19,15 @@ namespace ClientKingOfDices
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             IPAddress ip = IPAddress.Parse("127.0.0.1");
-            IPEndPoint EP = new IPEndPoint(ip, 9999);
+            IPEndPoint server = new IPEndPoint(ip, 9999);
             Socket socket = new Socket(ip.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             try
             {
-                socket.Connect(EP);
-                MessageBox.Show("connessione al server eseguita con successo");
+                socket.Connect(server);
+                //MessageBox.Show("connessione al server eseguita con successo");
                 
                 //RICEVIMENTO PRIMO DADO
                 byte[] BRecive = new byte[1024];
