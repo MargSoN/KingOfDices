@@ -59,64 +59,76 @@ namespace ServerKingOfDices
 
         private void ClientThread(Socket num)
         {
-            //PRIMO TIRO DI DADI
-            int RollDice = 0;
-            Random rn = new Random();
-            RollDice = rn.Next(1, 7);
-            label1.Text = "numero dado 1=" + RollDice.ToString();
-            //MessageBox.Show("numero" + RollDice); //Messagebox che se tolgo non va
-                                                  //listView1.Items.Add(num.LocalEndPoint.ToString() + " " + NumCas.ToString());
-            byte[] BRollDice = BitConverter.GetBytes(RollDice);
-            num.Send(BRollDice);
-            Thread.Sleep(500);
+            try
+            {
+                Random seed = new Random(); //creo un seed casuale
+                //PRIMO TIRO DI DADI
+                int RollDice = 0;
+                Random rn = new Random(seed.Next());
+                RollDice = rn.Next(1, 7);
+                label1.Text = "numero dado 1=" + RollDice.ToString();
+                //listView1.Items.Add(num.LocalEndPoint.ToString() + " " + NumCas.ToString());
+                byte[] BRollDice = BitConverter.GetBytes(RollDice);
+                num.Send(BRollDice);
 
-            //SECONDO TIRO DI DADI
-            int RollDice2 = 0;
-            Random rn2 = new Random();
-            RollDice2 = rn2.Next(1, 7);
-            label2.Text = "numero dado 2=" + RollDice2.ToString();
-            //MessageBox.Show("numero" + RollDice2); //Messagebox che se tolgo non va
-            byte[] BRollDice2 = BitConverter.GetBytes(RollDice2);
-            num.Send(BRollDice2);
-            Thread.Sleep(500);
+                //SECONDO TIRO DI DADI
+                int RollDice2 = 0;
+                Random rn2 = new Random(seed.Next());
+                RollDice2 = rn2.Next(1, 7);
+                label2.Text = "numero dado 2=" + RollDice2.ToString();
+                byte[] BRollDice2 = BitConverter.GetBytes(RollDice2);
+                num.Send(BRollDice2);
 
-            //SOMMA DEI DUE DADI
-            int addrolls = 0;
-            addrolls = RollDice + RollDice2;
-            byte[] BAddrolls = BitConverter.GetBytes(addrolls);
-            num.Send(BAddrolls);
-            num.Shutdown(SocketShutdown.Both);
-            /*return RollDice;
-            return RollDice2;
-            return addrolls;*/
+                //SOMMA DEI DUE DADI
+                int addrolls = 0;
+                addrolls = RollDice + RollDice2;
+                byte[] BAddrolls = BitConverter.GetBytes(addrolls);
+                num.Send(BAddrolls);
+                num.Shutdown(SocketShutdown.Both);
+                /*return RollDice;
+                return RollDice2;
+                return addrolls;*/
+            }
+            
+            catch (Exception errore)
+            {
+                MessageBox.Show(errore.Message);
+            }
         }
 
         /*public void doClient(Socket num)
         {
-            byte[] bytes = new Byte[1024];
-            String data = "";
-            while (data != "Quit$")
+            try
             {
-                // An incoming connection needs to be processed.  
-                data = "";
-                while (data.IndexOf("$") == -1)
+                byte[] bytes = new Byte[1024];
+                String data = "";
+                while (data != "Quit$")
                 {
-                    int bytesRec = num.Receive(bytes);
-                    data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                    // An incoming connection needs to be processed.  
+                    data = "";
+                    while (data.IndexOf("$") == -1)
+                    {
+                        int bytesRec = num.Receive(bytes);
+                        data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                    }
+                    // Show the data on the console.  
+                    Console.WriteLine("Messaggio ricevuto : {0}", data);
+
+                    // Echo the data back to the client.  
+                    byte[] msg = Encoding.ASCII.GetBytes(data);
+
+                    num.Send(msg);
                 }
+                num.Shutdown(SocketShutdown.Both);
+                num.Close();
+                data = "";
 
-                // Show the data on the console.  
-                Console.WriteLine("Messaggio ricevuto : {0}", data);
-
-                // Echo the data back to the client.  
-                byte[] msg = Encoding.ASCII.GetBytes(data);
-
-                num.Send(msg);
             }
-            num.Shutdown(SocketShutdown.Both);
-            num.Close();
-            data = "";
-
+            
+            catch (Exception errore)
+            {
+                MessageBox.Show(errore.Message);
+            }
         }*/
     }
 }

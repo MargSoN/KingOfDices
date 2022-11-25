@@ -45,8 +45,6 @@ namespace ClientKingOfDices
                 socket.Receive(BRecive2);
                 int messaggio2 = BitConverter.ToInt32(BRecive2, 0);
                 label2.Text = messaggio2.ToString();
-                //MessageBox.Show(messaggio.ToString());
-                //MessageBox.Show(messaggio2.ToString());
 
                 //RICEVIMENTO DELLA SOMMA
                 byte[] BReciveSum = new byte[1024];
