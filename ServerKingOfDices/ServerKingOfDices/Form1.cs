@@ -34,21 +34,13 @@ namespace ServerKingOfDices
             try
             {
                 socket.Bind(endpoint);
-                MessageBox.Show("server avviato con successo");
-                int i = 0;
                 socket.Listen(10);
-                while (true)
+                MessageBox.Show("server avviato correttamente");
+                Thread Accept = new Thread(() =>
                 {
-                    Socket num = socket.Accept();
-                    MessageBox.Show("client connesso con sucesso");
-                    Thread ThreadMulticlient = new Thread(() => {
-                       // doClient(socket);
-                        /*i=*/ClientThread(num);
-                    });
-                    ThreadMulticlient.Start();
-                    ThreadMulticlient.Join();
-                    num.Close();
-                }
+                    ClientAccept(socket);
+                });
+                Accept.Start();
             }
 
             catch (Exception errore)
@@ -57,66 +49,112 @@ namespace ServerKingOfDices
             }
         }
 
-        private void ClientThread(Socket num)
+        private Dictionary<Socket,List<int>> ClientThread(Socket client)
         {
-            //PRIMO TIRO DI DADI
-            int RollDice = 0;
-            Random rn = new Random();
-            RollDice = rn.Next(1, 7);
-            label1.Text = "numero dado 1=" + RollDice.ToString();
-            //MessageBox.Show("numero" + RollDice); //Messagebox che se tolgo non va
-                                                  //listView1.Items.Add(num.LocalEndPoint.ToString() + " " + NumCas.ToString());
-            byte[] BRollDice = BitConverter.GetBytes(RollDice);
-            num.Send(BRollDice);
-            Thread.Sleep(500);
+            try
+            {
+                Random seed = new Random(); //creo un seed casuale
+                //PRIMO TIRO DI DADI
+                Dictionary<Socket, List<int>> ValoriClient = new Dictionary<Socket, List<int>>();
+                List<int> ValoreDadi = new List<int>();
+                int RollDice = 0;
+                int addrolls = 0;
+                Random rn = new Random(seed.Next());
+                RollDice = rn.Next(1, 7);
+                ValoreDadi.Add(RollDice);
+                addrolls = RollDice;
+                label1.Text = "numero dado 1=" + RollDice.ToString();
+                //listView1.Items.Add(num.LocalEndPoint.ToString() + " " + NumCas.ToString());
+                byte[] BRollDice = BitConverter.GetBytes(RollDice);
+                client.Send(BRollDice);
 
-            //SECONDO TIRO DI DADI
-            int RollDice2 = 0;
-            Random rn2 = new Random();
-            RollDice2 = rn2.Next(1, 7);
-            label2.Text = "numero dado 2=" + RollDice2.ToString();
-            //MessageBox.Show("numero" + RollDice2); //Messagebox che se tolgo non va
-            byte[] BRollDice2 = BitConverter.GetBytes(RollDice2);
-            num.Send(BRollDice2);
-            Thread.Sleep(500);
+                //SECONDO TIRO DI DADI
+                RollDice = rn.Next(1,7);
+                ValoreDadi.Add(RollDice);
+                addrolls += RollDice;
+                ValoreDadi.Add(addrolls);
+                label2.Text = "numero dado 2=" + RollDice.ToString();
+                BRollDice = BitConverter.GetBytes(RollDice);
+                client.Send(BRollDice);
+                ValoriClient.Add(client, ValoreDadi);
 
-            //SOMMA DEI DUE DADI
-            int addrolls = 0;
-            addrolls = RollDice + RollDice2;
-            byte[] BAddrolls = BitConverter.GetBytes(addrolls);
-            num.Send(BAddrolls);
-            num.Shutdown(SocketShutdown.Both);
-            /*return RollDice;
-            return RollDice2;
-            return addrolls;*/
+                //INVIO SOMMA
+                byte[] BAddrolls = BitConverter.GetBytes(addrolls);
+                client.Send(BAddrolls);
+                //client.Shutdown(SocketShutdown.Both);
+                return ValoriClient;
+            }
+            
+            catch (Exception errore)
+            {
+                MessageBox.Show(errore.Message);
+            }
+
+            return null;
         }
 
-        /*public void doClient(Socket num)
+        private void ClientAccept (Socket socket)
         {
-            byte[] bytes = new Byte[1024];
-            String data = "";
-            while (data != "Quit$")
+            int N_client = 0;
+            Dictionary<Socket,List<int>> ValoriClient = new Dictionary<Socket, List<int>>();
+            while (true)
             {
-                // An incoming connection needs to be processed.  
-                data = "";
-                while (data.IndexOf("$") == -1)
+                if (N_client < 2)
                 {
-                    int bytesRec = num.Receive(bytes);
-                    data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                    Socket client = socket.Accept();
+                    if (client.Connected == true)
+                    {
+                        N_client++;
+                        ValoriClient.Add(client, null);
+                    }
+                    Thread ThreadMulticlient = new Thread(() => {
+                        if (N_client==2)
+                        {
+                            Dictionary<Socket, List<int>> MapTemp;
+                            foreach (var ValoriLetti in ValoriClient)
+                            {
+                                if (ValoriLetti.Key.Equals(ValoriClient.ElementAt(0).Key))
+                                {
+                                    MapTemp = ClientThread(ValoriClient.ElementAt(1).Key);
+                                }
+                                else
+                                {
+                                    MapTemp = ClientThread(ValoriClient.ElementAt(0).Key);
+                                }
+                                ValoriClient.Append(ValoriLetti.Key, MapTemp.ElementAt(0).Value);
+                                ValoriClient.
+                            }
+
+                        }
+
+                        /*byte[] buffer = new byte[1024];
+                        client.Receive(buffer);
+                        Dictionary<Socket, List<int>> MapTemp = ClientThread(client);
+                        foreach (var ValoriLetti in MapTemp)
+                        {
+                            ValoriClient.Add(ValoriLetti.Key, ValoriLetti.Value);
+                        }
+                        if (N_client==2)
+                        {
+                            N_client = 0;
+                            List<int> ListaSwap = new List<int>();
+                            ListaSwap = ValoriClient.ElementAt(0).Value;
+                            ValoriClient.Add(ValoriClient.ElementAt(0).Key, ValoriClient.ElementAt(1).Value);
+                            ValoriClient.Add(ValoriClient.ElementAt(1).Key, ListaSwap);
+                            foreach (var ValoriLetti in ValoriClient)
+                            {
+                                MessageBox.Show(ValoriLetti.Key.RemoteEndPoint.ToString());
+                                foreach (var ValoriLista in ValoriLetti.Value)
+                                {
+                                    MessageBox.Show(ValoriLista.ToString());
+                                }
+                            }
+                        }
+                    */
+                    });
+                    ThreadMulticlient.Start();
                 }
-
-                // Show the data on the console.  
-                Console.WriteLine("Messaggio ricevuto : {0}", data);
-
-                // Echo the data back to the client.  
-                byte[] msg = Encoding.ASCII.GetBytes(data);
-
-                num.Send(msg);
             }
-            num.Shutdown(SocketShutdown.Both);
-            num.Close();
-            data = "";
-
-        }*/
+        }
     }
 }
