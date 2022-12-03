@@ -30,8 +30,6 @@ namespace ClientKingOfDices
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //RollDadi.Enabled = true;
-            //RollDadi2.Enabled = true;
             try
             {
                 if (counter == 0)
@@ -47,9 +45,9 @@ namespace ClientKingOfDices
                 }
                 else
                 {
-                    socket.Send(BitConverter.GetBytes(true));
+                    socket.Send(BitConverter.GetBytes(true));//sto dicendo al server che ho ri-tirato i dadi
                     counter++;
-                    if (counter == 4)
+                    if (counter == 4)//primo tiro e tre ri-tiri
                     {
                         button1.Enabled = false;
                         button3.Enabled = false;
@@ -63,7 +61,6 @@ namespace ClientKingOfDices
 
         private void start_connect()
         {
-            //IPAddress ip = IPAddress.Parse("10.0.0.146");
             IPAddress ip = IPAddress.Parse("192.168.224.10");
             IPEndPoint EP = new IPEndPoint(ip, 9999);
             socket = new Socket(ip.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
@@ -140,34 +137,25 @@ namespace ClientKingOfDices
                 messaggio = BitConverter.ToInt32(BRecive, 0);
                 if (messaggio >= 1)
                 {
-                    label1.Invoke((MethodInvoker)delegate ()
+                    label1.Invoke((MethodInvoker)delegate ()//invoca il thread che ha creato lable e gli delega il compito nelle graffe
                     {
-                        label1.Text = messaggio.ToString();
+                        label1.Text = messaggio.ToString();//scrive il primo dado tirato
                     });
 
                     socket.Receive(BRecive);
                     messaggio = BitConverter.ToInt32(BRecive, 0);
                     label2.Invoke((MethodInvoker)delegate ()
                     {
-                        label2.Text = messaggio.ToString();
+                        label2.Text = messaggio.ToString();//secondo dado tirato
                     });
 
                     socket.Receive(BRecive);
                     messaggio = BitConverter.ToInt32(BRecive, 0);
                     label3.Invoke((MethodInvoker)delegate ()
                     {
-                        label3.Text = messaggio.ToString();
+                        label3.Text = messaggio.ToString();//la somma
                     });
                 }
-
-                /*RollDadi.Invoke((MethodInvoker)delegate ()
-                {
-                    RollDadi.Enabled = false;
-                });
-                RollDadi2.Invoke((MethodInvoker)delegate ()
-                {
-                    RollDadi2.Enabled = false;
-                });*/
             } catch(Exception exp)
             {
                 MessageBox.Show(exp.Message);
@@ -178,8 +166,6 @@ namespace ClientKingOfDices
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            /*RollDadi.Enabled = false;
-            RollDadi2.Enabled = false;*/
             button3.Enabled = false;
         }
     }

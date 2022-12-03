@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Diagnostics;
+using System.Net.NetworkInformation;
 
 namespace ServerKingOfDices
 {
@@ -22,15 +23,39 @@ namespace ServerKingOfDices
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private IPAddress getIpAddress()
+        {
+            List<IPAddress> allIP = new List<IPAddress>(Dns.GetHostAddresses(Dns.GetHostName()));
+            //dns.gethostaddress dato il nome della macchina mi restutuisce gli indirizzi attivi, e per trovare l'host faccio dns.gethostname
+            IPAddress ip = IPAddress.Parse("127.0.0.1");//indizzo default locale
+
+            foreach (var inf in System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces())//itero le schede di rete
+            {
+                if (inf.Name.Equals("Ethernet") || inf.Name.Equals("Wi-Fi"))//mi controlla che la scheda di rete sia ethernet o wifi
+                {
+                    foreach (UnicastIPAddressInformation ip_interface in inf.GetIPProperties().UnicastAddresses)//mi itera gli indirizzi unicast dell'itnterfaccia
+                        //unicast uso per la connessione
+                    {
+                        // Controllare che sia IPv4 e che sia nella lista delle interfacce attive
+                        if (ip_interface.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork && allIP.Contains(ip_interface.Address))
+                        {
+                            ip = ip_interface.Address;//metto in IP l'indirizzo trovato
+                            return ip;//do la priorita' a ethernet
+                        }
+                    }
+                }
+            }
+            return ip;
+        }
+
+            private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                IPAddress ip = IPAddress.Parse("192.168.224.10");
-                //IPAddress ip = IPAddress.Parse("10.0.0.146");
+                IPAddress ip = getIpAddress();
                 Socket server = new Socket(ip.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
                 IPEndPoint endpoint = new IPEndPoint(ip, 9999);
-                server.Bind(endpoint);
+                server.Bind(endpoint);//mi associa l'indirizzo IP alla porta
                 server.Listen(10);
 
                 Thread Accept = new Thread(() =>
@@ -60,7 +85,7 @@ namespace ServerKingOfDices
             {
                 int RollDice;
                 byte[] buffer;
-                Random rn = new Random(Guid.NewGuid().GetHashCode());
+                Random rn = new Random(Guid.NewGuid().GetHashCode());//seed
 
                 RollDice = rn.Next(1, 7);
                 addrolls = RollDice;
@@ -103,7 +128,7 @@ namespace ServerKingOfDices
                             ValoriClient.Add(client, 0);
                         }
 
-                        Thread ThreadMulticlient = new Thread(() =>
+                        Thread ThreadMulticlient = new Thread(() =>//lambda function funzione anonima
                         {
                             if (N_client == 2) //Entrerà soltanto il secondo client
                             {
@@ -119,13 +144,13 @@ namespace ServerKingOfDices
                             }
                         });
                         ThreadMulticlient.Start();
-                        ThreadMulticlient.Join();
+                        ThreadMulticlient.Join();//aspetta che i client ricevano tutti i dati
                     }
                     catch (Exception exp)
                     {
                         MessageBox.Show(exp.Message);
                     }
-                } else 
+                } else //se n client e'2
                 {
                     try
                     {
@@ -133,13 +158,13 @@ namespace ServerKingOfDices
                         {
                             int counter = 0, ris = 0;
                             bool stop = false;
-                            while (counter < 3 && !stop)
+                            while (counter < 3 && !stop)//se arrivo a 3 tiri o se faccio fine gioco
                             {
-                                ris = gioca_turno(ValoriClient.ElementAt(0).Key,ValoriClient.ElementAt(1).Key);
-                                if (ris != 0)
-                                    ValoriClient[ValoriClient.ElementAt(1).Key] = ris;
+                                ris = gioca_turno(ValoriClient.ElementAt(0).Key,ValoriClient.ElementAt(1).Key);//clicco player 1 cambio player 2
+                                if (ris != 0)//se non e' ancora finita
+                                    ValoriClient[ValoriClient.ElementAt(1).Key] = ris;//modofico il risultato del player 2
                                 else
-                                    stop = true;
+                                    stop = true;//mi ferma tutto e mi finisce la partita di player 1
                                 counter++;
                             }
                         });
@@ -203,10 +228,10 @@ namespace ServerKingOfDices
             int risultato = 0;
             try
             {
-                player1.Receive(buffer);
+                player1.Receive(buffer);//salvo in buffer cosa mi sa player1 (un valore booleano)
                 if (BitConverter.ToBoolean(buffer, 0))
                 {
-                    int somma_dadi = ClientThread(player2);
+                    int somma_dadi = ClientThread(player2);//modifico le lable del player 2 (i miei dadi)
                     if (somma_dadi == 0)
                         throw new NullReferenceException("Non sono stati lanciati i dati a seguito di una eccezione");
                     risultato = somma_dadi;
