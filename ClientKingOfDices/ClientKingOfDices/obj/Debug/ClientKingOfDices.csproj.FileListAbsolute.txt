@@ -40,3 +40,45 @@ C:\Users\Utente\Desktop\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debu
 C:\Users\Utente\Desktop\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.CoreCompileInputs.cache
 C:\Users\Utente\Desktop\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.exe
 C:\Users\Utente\Desktop\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.pdb
+C:\Users\Alessandro\Desktop\Ripetizioni\OtherProject\KingOfDices\ClientKingOfDices\ClientKingOfDices\bin\Debug\ClientKingOfDices.exe.config
+C:\Users\Alessandro\Desktop\Ripetizioni\OtherProject\KingOfDices\ClientKingOfDices\ClientKingOfDices\bin\Debug\ClientKingOfDices.exe
+C:\Users\Alessandro\Desktop\Ripetizioni\OtherProject\KingOfDices\ClientKingOfDices\ClientKingOfDices\bin\Debug\ClientKingOfDices.pdb
+C:\Users\Alessandro\Desktop\Ripetizioni\OtherProject\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.AssemblyReference.cache
+C:\Users\Alessandro\Desktop\Ripetizioni\OtherProject\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.SuggestedBindingRedirects.cache
+C:\Users\Alessandro\Desktop\Ripetizioni\OtherProject\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.Form1.resources
+C:\Users\Alessandro\Desktop\Ripetizioni\OtherProject\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.Properties.Resources.resources
+C:\Users\Alessandro\Desktop\Ripetizioni\OtherProject\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.GenerateResource.cache
+C:\Users\Alessandro\Desktop\Ripetizioni\OtherProject\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.CoreCompileInputs.cache
+C:\Users\Alessandro\Desktop\Ripetizioni\OtherProject\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.exe
+C:\Users\Alessandro\Desktop\Ripetizioni\OtherProject\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.pdb
+C:\Users\Alessandro\Desktop\Ripetizioni\KingOfDices\ClientKingOfDices\ClientKingOfDices\bin\Debug\ClientKingOfDices.exe.config
+C:\Users\Alessandro\Desktop\Ripetizioni\KingOfDices\ClientKingOfDices\ClientKingOfDices\bin\Debug\ClientKingOfDices.exe
+C:\Users\Alessandro\Desktop\Ripetizioni\KingOfDices\ClientKingOfDices\ClientKingOfDices\bin\Debug\ClientKingOfDices.pdb
+C:\Users\Alessandro\Desktop\Ripetizioni\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.AssemblyReference.cache
+C:\Users\Alessandro\Desktop\Ripetizioni\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.SuggestedBindingRedirects.cache
+C:\Users\Alessandro\Desktop\Ripetizioni\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.Form1.resources
+C:\Users\Alessandro\Desktop\Ripetizioni\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.Properties.Resources.resources
+C:\Users\Alessandro\Desktop\Ripetizioni\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.GenerateResource.cache
+C:\Users\Alessandro\Desktop\Ripetizioni\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.CoreCompileInputs.cache
+C:\Users\Alessandro\Desktop\Ripetizioni\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.exe
+C:\Users\Alessandro\Desktop\Ripetizioni\KingOfDices\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.pdb
+C:\Users\Utente\Desktop\KingOfDices-master (1)\KingOfDices-master\ClientKingOfDices\ClientKingOfDices\bin\Debug\ClientKingOfDices.exe.config
+C:\Users\Utente\Desktop\KingOfDices-master (1)\KingOfDices-master\ClientKingOfDices\ClientKingOfDices\bin\Debug\ClientKingOfDices.exe
+C:\Users\Utente\Desktop\KingOfDices-master (1)\KingOfDices-master\ClientKingOfDices\ClientKingOfDices\bin\Debug\ClientKingOfDices.pdb
+C:\Users\Utente\Desktop\KingOfDices-master (1)\KingOfDices-master\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.AssemblyReference.cache
+C:\Users\Utente\Desktop\KingOfDices-master (1)\KingOfDices-master\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.Form1.resources
+C:\Users\Utente\Desktop\KingOfDices-master (1)\KingOfDices-master\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.Properties.Resources.resources
+C:\Users\Utente\Desktop\KingOfDices-master (1)\KingOfDices-master\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.GenerateResource.cache
+C:\Users\Utente\Desktop\KingOfDices-master (1)\KingOfDices-master\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.CoreCompileInputs.cache
+C:\Users\Utente\Desktop\KingOfDices-master (1)\KingOfDices-master\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.exe
+C:\Users\Utente\Desktop\KingOfDices-master (1)\KingOfDices-master\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.pdb
+C:\Users\Utente\Desktop\KingOfDices-V1\KingOfDices-V1\ClientKingOfDices\ClientKingOfDices\bin\Debug\ClientKingOfDices.exe.config
+C:\Users\Utente\Desktop\KingOfDices-V1\KingOfDices-V1\ClientKingOfDices\ClientKingOfDices\bin\Debug\ClientKingOfDices.exe
+C:\Users\Utente\Desktop\KingOfDices-V1\KingOfDices-V1\ClientKingOfDices\ClientKingOfDices\bin\Debug\ClientKingOfDices.pdb
+C:\Users\Utente\Desktop\KingOfDices-V1\KingOfDices-V1\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.AssemblyReference.cache
+C:\Users\Utente\Desktop\KingOfDices-V1\KingOfDices-V1\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.Form1.resources
+C:\Users\Utente\Desktop\KingOfDices-V1\KingOfDices-V1\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.Properties.Resources.resources
+C:\Users\Utente\Desktop\KingOfDices-V1\KingOfDices-V1\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.GenerateResource.cache
+C:\Users\Utente\Desktop\KingOfDices-V1\KingOfDices-V1\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.csproj.CoreCompileInputs.cache
+C:\Users\Utente\Desktop\KingOfDices-V1\KingOfDices-V1\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.exe
+C:\Users\Utente\Desktop\KingOfDices-V1\KingOfDices-V1\ClientKingOfDices\ClientKingOfDices\obj\Debug\ClientKingOfDices.pdb
